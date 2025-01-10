@@ -1,3 +1,6 @@
+using System;
+
+[Serializable]
 public class FloatReference
 {
     public bool UseConstant = true;
