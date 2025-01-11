@@ -6,7 +6,7 @@
             "id": "4917fe4f-b114-4d22-a921-b89094c22343",
             "actions": [
                 {
-                    "name": "Jump",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "44e8cf8a-5d11-431f-a08f-9274a0320a33",
                     "expectedControlType": "Button",
@@ -28,11 +28,11 @@
                 {
                     "name": "",
                     "id": "d32f939b-ce62-46ea-8332-bfa6d568100d",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Jump",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

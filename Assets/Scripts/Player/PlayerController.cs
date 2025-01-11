@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class NewBehaviourScript : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private PlayerInput inputActions;
     private Vector2 rawInput;
-    private bool isJumping;
+    private bool isInteracting;
     
     [SerializeField]
     private CharacterController characterController;
@@ -21,8 +21,8 @@ public class NewBehaviourScript : MonoBehaviour
     private void OnEnable()
     {
         inputActions.Enable();
-        inputActions.Player.Jump.performed += ctx => { isJumping = true; };
-        inputActions.Player.Jump.canceled += ctx => { isJumping = false; };
+        inputActions.Player.Interact.performed += ctx => { isInteracting = true; };
+        inputActions.Player.Interact.canceled += ctx => { isInteracting = false; };
         inputActions.Player.Move.performed += OnMove;
         inputActions.Player.Move.canceled += OnMove;
     }
