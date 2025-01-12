@@ -9,20 +9,21 @@ public class PlayerController : MonoBehaviour
     private Vector2 rawInput;
     private bool isInteracting;
     
-    [SerializeField]
     private CharacterController characterController;
 
-    
+    [SerializeField]
+    public Camera CurrentCamera;
     private void Awake()
     {
+        characterController = GetComponent<CharacterController>();
         inputActions = new PlayerInput();
+        CurrentCamera = Camera.main;
     }
 
     private void OnEnable()
     {
         inputActions.Enable();
-        inputActions.Player.Interact.performed += ctx => { isInteracting = true; };
-        inputActions.Player.Interact.canceled += ctx => { isInteracting = false; };
+        inputActions.Player.Interact.started += OnInteract;  
         inputActions.Player.Move.performed += OnMove;
         inputActions.Player.Move.canceled += OnMove;
     }
@@ -31,7 +32,27 @@ public class PlayerController : MonoBehaviour
     {
         inputActions.Player.Move.performed -= OnMove;
         inputActions.Player.Move.canceled -= OnMove;
+        inputActions.Player.Interact.canceled -= OnInteract;
         inputActions.Disable();
+    }
+
+    private void OnInteract(InputAction.CallbackContext ctx)
+    {
+        Vector2 mouseWorldPosition = CurrentCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = (new Ray(characterController.transform.position, mouseWorldPosition)).direction;
+        RaycastHit2D hitInfo = Physics2D.Raycast(mouseWorldPosition, direction, 5f);
+        
+        if (hitInfo)
+        {
+            Debug.DrawLine(characterController.transform.position, mouseWorldPosition, Color.yellow, 10f);
+            Debug.Log("hit");
+            Debug.Log(hitInfo.collider.tag, hitInfo.collider.gameObject);
+            if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactable))
+            {
+                Debug.Log("interacted");
+                interactable.Interact();
+            }
+        }
     }
 
     private void OnMove(InputAction.CallbackContext ctx)

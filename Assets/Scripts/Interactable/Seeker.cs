@@ -12,13 +12,10 @@ public class Seeker : MonoBehaviour
     
     // yet figure out what to do with Tags.cs
     public string SeekerTag = "Player";
-    public GameObject Parent;
 
     private void Awake()
     {
-        Parent = gameObject;
-        SeekerTag = gameObject.tag;
-        
+        SeekerTag = gameObject.tag;   
     }
 
     private void Start()
@@ -40,7 +37,7 @@ public class Seeker : MonoBehaviour
         GameObject[] result = GameObject.FindGameObjectsWithTag(searchTag)
             .Where(go =>
             {
-                float distance = Vector3.Distance(go.transform.position, Parent.transform.position);
+                float distance = Vector3.Distance(go.transform.position, gameObject.transform.position);
                 Debug.Log(distance);
                 return (distance <= searchDistance);
             })
