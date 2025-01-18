@@ -2,8 +2,10 @@ using UnityEngine;
 using UnityEditor;
 using System.Linq;
 
+// component has no use at the moment
 public class Seeker : MonoBehaviour
 {
+    // use data from elsewhere instead to avoid duplicates
     [SerializeField]
     public FloatReference InteractionDistance;
 
@@ -11,7 +13,7 @@ public class Seeker : MonoBehaviour
     public string TargetTag = "Interactable";
     
     // yet figure out what to do with Tags.cs
-    public string SeekerTag = "Player";
+    public string SeekerTag;
 
     private void Awake()
     {
@@ -20,7 +22,7 @@ public class Seeker : MonoBehaviour
 
     private void Start()
     {
-        FindObjects(5f, "Interactable");
+        //FindObjects(5f, "Interactable");
     }
 
     private void Update()

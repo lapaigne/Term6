@@ -8,8 +8,10 @@ public class PlayerController : MonoBehaviour
     private PlayerInput inputActions;
     private Vector2 rawInput;
     private bool isInteracting;
-    
     private CharacterController characterController;
+
+    [SerializeField]
+    public FloatReference InteractionDistance;
 
     [SerializeField]
     public Camera CurrentCamera;
@@ -40,17 +42,14 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 mouseWorldPosition = CurrentCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (new Ray(characterController.transform.position, mouseWorldPosition)).direction;
-        RaycastHit2D hitInfo = Physics2D.Raycast(mouseWorldPosition, direction, 5f);
+        RaycastHit2D hitInfo = Physics2D.Raycast(mouseWorldPosition, direction, InteractionDistance);
         
         if (hitInfo)
         {
             Debug.DrawLine(characterController.transform.position, mouseWorldPosition, Color.yellow, 10f);
-            Debug.Log("hit");
-            Debug.Log(hitInfo.collider.tag, hitInfo.collider.gameObject);
             if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactable))
             {
-                Debug.Log("interacted");
-                interactable.Interact();
+                interactable.Interact(gameObject);
             }
         }
     }

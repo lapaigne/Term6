@@ -5,9 +5,6 @@ using UnityEngine.Events;
 public class InteractableObject : MonoBehaviour, IInteractable
 {
     [SerializeField]
-    public GameObject parent;
-
-    [SerializeField]
     private UnityEvent _onInteract;
 
     UnityEvent IInteractable.OnInteract
@@ -16,9 +13,10 @@ public class InteractableObject : MonoBehaviour, IInteractable
         set => _onInteract = value;
     }
 
-    public void Interact()
+    public void Interact(GameObject newParent)
     {
-        Debug.Log("invoke");
+        // to do:
+        // pass data (parent) to Invoke method
         _onInteract.Invoke();
     }
 }
