@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class NPC : MonoBehaviour
 {
     // Current HP amount
     public int HP;
@@ -13,6 +13,6 @@ public class Enemy : MonoBehaviour
     
     public Vector2 LookDirection {  get; private set; }
     public Vector2 MoveDirection { get; private set; }
-    
-    public EnemyAction CurrentAction;
+
+    public NPCActions CurrentAction;
 }

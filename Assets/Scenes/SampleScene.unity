@@ -478,6 +478,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2447800137188325073, guid: b84f82bf6fabe8d43bac4dd2e2237c59, type: 3}
+      propertyPath: MaxHP.Variable
+      value: 
+      objectReference: {fileID: 11400000, guid: ed7212b109c8f75439b4970b04e4f751, type: 2}
     - target: {fileID: 5683027056844956473, guid: b84f82bf6fabe8d43bac4dd2e2237c59, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -520,7 +524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7043338096300737454, guid: b84f82bf6fabe8d43bac4dd2e2237c59, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: NPC
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

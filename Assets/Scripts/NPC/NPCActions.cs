@@ -1,4 +1,4 @@
-﻿public enum EnemyAction
+﻿public enum NPCActions
 {
     Stand,
     Move,
