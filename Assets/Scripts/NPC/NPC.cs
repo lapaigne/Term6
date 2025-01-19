@@ -30,6 +30,7 @@ public class NPC : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
+        _agent.speed = MaxSpeed;
     }
 
     private void Update()
