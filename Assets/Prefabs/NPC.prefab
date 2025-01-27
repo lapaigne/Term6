@@ -134,18 +134,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88cc378770cb9548a9d50ecb645ede4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 50
-  MaxHP:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: ed7212b109c8f75439b4970b04e4f751, type: 2}
-  MaxSpeed:
-    UseConstant: 0
-    ConstantValue: 0
+  _displayName: 
+  _maxHP:
+    UseConstant: 1
+    ConstantValue: 25
+    Variable: {fileID: 0}
+  _maxMoveSpeed:
+    UseConstant: 1
+    ConstantValue: 1
     Variable: {fileID: 0}
   LookTarget: {x: 0, y: 0}
   MoveTarget: {x: 0, y: 0}
   CurrentAction: 0
+  Player: {fileID: 0}
 --- !u!195 &-7170880881812914558
 NavMeshAgent:
   m_ObjectHideFlags: 0
