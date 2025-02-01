@@ -1,25 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     private PlayerInput inputActions;
-    private Vector2 rawInput;
-    private bool isInteracting;
     private CharacterController characterController;
+    private PlayerData playerData;
+    private Vector2 rawInput;
 
+    private Vector2 mouseWorldPosition;
+    private Vector2 mouseDirection;
+    
     [SerializeField]
-    public FloatReference InteractionDistance;
-
-    [SerializeField]
-    public Camera CurrentCamera;
+    public Camera currentCamera;
     private void Awake()
     {
+        playerData = GetComponent<PlayerData>();
         characterController = GetComponent<CharacterController>();
         inputActions = new PlayerInput();
-        CurrentCamera = Camera.main;
+        currentCamera = Camera.main;
     }
 
     private void OnEnable()
@@ -39,10 +38,12 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnInteract(InputAction.CallbackContext ctx)
-    {
-        Vector2 mouseWorldPosition = CurrentCamera.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = (new Ray(characterController.transform.position, mouseWorldPosition)).direction;
-        RaycastHit2D hitInfo = Physics2D.Raycast(mouseWorldPosition, direction, InteractionDistance);
+    { 
+        RaycastHit2D hitInfo = Physics2D.Raycast(
+            characterController.transform.position, 
+            mouseDirection, 
+            playerData.interactionDistance
+            );
         
         if (hitInfo)
         {
@@ -58,11 +59,21 @@ public class PlayerController : MonoBehaviour
     {
         rawInput = ctx.ReadValue<Vector2>();
     }
+
     private void Update()
     {
-        Vector3 movement = new Vector3(rawInput.x, rawInput.y, 0);
+        Vector2 movement = rawInput;
         movement.Normalize();
-        movement *= 5f * Time.deltaTime;
+        movement *= playerData.speed * Time.deltaTime;
         characterController.Move(movement);
+
+        mouseWorldPosition = currentCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouseDirection = mouseWorldPosition - (Vector2)characterController.transform.position;
+
+        if (mouseDirection.magnitude > 0.1f)
+        {
+            float rotationAngle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, rotationAngle);
+        }
     }
 }

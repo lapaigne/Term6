@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+
 public partial class NPC : MonoBehaviour, IEntity
 {
     public int CurrentHP { get; private set; }

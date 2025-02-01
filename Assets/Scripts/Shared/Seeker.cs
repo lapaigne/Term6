@@ -6,18 +6,18 @@ using System.Linq;
 public class Seeker : MonoBehaviour
 {
     // use data from elsewhere instead to avoid duplicates
-    [SerializeField]
-    public FloatReference InteractionDistance;
+    private PlayerData playerData;
 
     [SerializeField]
-    public string TargetTag = "Interactable";
+    public string targetTag = "Interactable";
     
     // yet figure out what to do with Tags.cs
-    public string SeekerTag;
+    public string seekerTag;
 
     private void Awake()
     {
-        SeekerTag = gameObject.tag;   
+        playerData = GetComponent<PlayerData>();
+        seekerTag = gameObject.tag;   
     }
 
     private void Start()
