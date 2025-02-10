@@ -1,28 +1,25 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public partial class NPC : MonoBehaviour, IEntity
+public partial class NPC : MonoBehaviour
 {
-    public int CurrentHP { get; private set; }
-    public float CurrentMoveSpeed { get; private set; }
-    public Vector2 LookDirection { get; private set; }
-    public Vector2 MoveDirection { get; private set; }
+    public int currentHP;
+    public float currentMoveSpeed;
+    public Vector2 lookDirection;
+    public Vector2 moveDirection;
 
     [SerializeField]
-    private string _displayName;
-    public string DisplayName { get => _displayName; set => _displayName = value; }
+    public string displayName;
     [SerializeField]
-    private IntReference _maxHP;
-    public IntReference MaxHP { get => _maxHP; set => _maxHP = value; }
+    public IntReference maxHP;
     [SerializeField]
-    private FloatReference _maxMoveSpeed;
-    public FloatReference MaxSpeed { get => _maxMoveSpeed; set => _maxMoveSpeed = value; }
+    public FloatReference maxSpeed;
 
-    public Vector2 LookTarget;
-    public Vector2 MoveTarget;
+    public Vector2 lookTarget;
+    public Vector2 moveTarget;
 
-    public NPCAction CurrentAction;
-    public NPCRelation CurrentRelation;
+    public NPCAction currentAction;
+    public NPCRelation currentRelation;
 
     private float _updateTimer = 0;
     private NavMeshAgent _agent;
@@ -38,13 +35,12 @@ public partial class NPC : MonoBehaviour, IEntity
 
         // passing data from custom editor to agent component
 
-        _agent.speed = MaxSpeed;
+        _agent.speed = maxSpeed;
     }
 
     private NPCAction SwitchRelation() =>
-    CurrentRelation switch
+    currentRelation switch
     {
-        NPCRelation.Neutral => NPCAction.Idle,
         NPCRelation.Hostile => SetDestination(),
         _ => NPCAction.Idle,
     };
@@ -56,8 +52,7 @@ public partial class NPC : MonoBehaviour, IEntity
     }
 
     private void Update()
-    {
-        
+    {    
         if (_updateTimer > .5f)
         {
             SwitchRelation();
@@ -65,6 +60,4 @@ public partial class NPC : MonoBehaviour, IEntity
         }
         _updateTimer += Time.deltaTime;
     }
-
-
 }

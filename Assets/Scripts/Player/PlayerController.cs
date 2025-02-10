@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField]
     public Camera currentCamera;
+
+    [SerializeField]
+    public float cameraLerpFactor;
     private void Awake()
     {
         playerData = GetComponent<PlayerData>();
@@ -39,6 +42,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnInteract(InputAction.CallbackContext ctx)
     { 
+        // can use this for shooting instead
         RaycastHit2D hitInfo = Physics2D.Raycast(
             characterController.transform.position, 
             mouseDirection, 
@@ -75,5 +79,9 @@ public class PlayerController : MonoBehaviour
             float rotationAngle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, rotationAngle);
         }
+
+        // TODO: improve lerping
+        Vector2 newCameraPosition = Vector2.Lerp(currentCamera.transform.position, gameObject.transform.position, cameraLerpFactor);
+        currentCamera.transform.position = new Vector3(newCameraPosition.x, newCameraPosition.y, -10);
     }
 }

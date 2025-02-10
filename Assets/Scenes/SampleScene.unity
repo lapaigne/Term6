@@ -340,8 +340,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -2447800137188325073, guid: b84f82bf6fabe8d43bac4dd2e2237c59, type: 3}
+      propertyPath: maxSpeed.UseConstant
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2447800137188325073, guid: b84f82bf6fabe8d43bac4dd2e2237c59, type: 3}
       propertyPath: MaxSpeed.ConstantValue
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: -2447800137188325073, guid: b84f82bf6fabe8d43bac4dd2e2237c59, type: 3}
+      propertyPath: maxSpeed.ConstantValue
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -2447800137188325073, guid: b84f82bf6fabe8d43bac4dd2e2237c59, type: 3}
       propertyPath: _maxMoveSpeed.UseConstant
@@ -406,6 +414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1175080792}
   - component: {fileID: 1175080791}
+  - component: {fileID: 1175080793}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -425,8 +434,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f80f6d080ba793143ba38b189515136e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerHP: {fileID: 11400000, guid: 6fe72a0e59c27834b8bd4e2ce40fb969, type: 2}
-  PlayerMaxHP: {fileID: 11400000, guid: 1152876604c76914b80aef8f326f44fd, type: 2}
+  playerHP: {fileID: 0}
+  playerMaxHP: {fileID: 0}
+  inventory: {fileID: 0}
+  items: []
 --- !u!4 &1175080792
 Transform:
   m_ObjectHideFlags: 0
@@ -442,6 +453,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1175080793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175080790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b99247dab170740bdad90436ac43cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultSize: 10
+  items:
+  - amount: 3
+    item: {fileID: 11400000, guid: 45795ed19d4261640a3cd01d5f69ee17, type: 2}
 --- !u!1 &1555382778
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,6 +654,10 @@ PrefabInstance:
     - target: {fileID: 2657599022361013463, guid: 9da59def27112ff499bfd2332b9c89e6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110777151333432906, guid: 9da59def27112ff499bfd2332b9c89e6, type: 3}
+      propertyPath: cameraLerpFactor
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4211907606579809765, guid: 9da59def27112ff499bfd2332b9c89e6, type: 3}
       propertyPath: m_Name
