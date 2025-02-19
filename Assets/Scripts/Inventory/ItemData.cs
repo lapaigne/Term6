@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.Collections;
+using UnityEngine;
 
 public enum ItemCategory
 {
@@ -13,14 +14,15 @@ public enum ItemCategory
 [CreateAssetMenu]
 public class ItemData : ScriptableObject
 {
-    public string globalSpaceName = "default";
-    public string globalTagName;
+    private const int UNIVERSAL_MAX_STACK_SIZE = 32;
+
+    public string globalSpace = "default";
+    public string shortTag;
     public string completeTag;
     
     public Sprite image;
-
     public int variation;
-    public int maxQuantity;
+    public int maxQuantity = 1;
 
     // use category for sorting, potentially combine it with tags
     // define possible behaviour and actions
@@ -35,10 +37,15 @@ public class ItemData : ScriptableObject
 
     private void OnValidate()
     {
-        
-        if (globalTagName.Length > 0)
+        if (maxQuantity < 1) { maxQuantity = 1; }
+
+        if (maxQuantity > UNIVERSAL_MAX_STACK_SIZE) { maxQuantity = UNIVERSAL_MAX_STACK_SIZE; }
+
+        if (variation < 0) { variation = 0; }
+
+        if (shortTag.Length > 0)
         {
-            completeTag = $"{globalSpaceName}:{globalTagName}";
+            completeTag = $"{globalSpace}:{shortTag}";
             if (variation > 0)
             {
                 completeTag += $":{variation}";

@@ -2,9 +2,9 @@
 using UnityEngine;
 
 [Serializable]
-public struct AmountItemPair
+public struct CountItemPair
 {
-    public int amount;
+    public int count;
 #nullable enable
     public ItemData? item;
 #nullable disable
@@ -12,35 +12,29 @@ public struct AmountItemPair
 
 public class Inventory : MonoBehaviour
 {
-    /*
-    byte amount, 
-    ItemData? 
-    */
-
-    public int defaultSize; // perhaps, use items.Length instead?
     [SerializeField]
-    public AmountItemPair[] items;
-    public void AddItems(ItemData newItem, int amount)
+    public CountItemPair[] items;
+    public void AddItems(ItemData newItem, int count)
     {
-        int leftover = amount;
+        int leftover = count;
         for (int i = 0; i < items.Length; i++)
         {
             if (items[i].item?.completeTag == newItem.completeTag)
             {
-                int free = newItem.maxQuantity - items[i].amount;
-                int difference = Math.Min(free, amount);
+                int free = newItem.maxQuantity - items[i].count;
+                int difference = Math.Min(free, count);
                 leftover -= difference;
-                items[i].amount += difference;
+                items[i].count += difference;
                 if (leftover == 0) { return; }
             }
         }
 
         for (int i = 0; i < items.Length; i++)
         {
-            if (items[i].amount == 0)
+            if (items[i].count == 0)
             {
                 int difference = Math.Min(newItem.maxQuantity, leftover);
-                items[i].amount = difference;
+                items[i].count = difference;
                 leftover -= difference;
                 items[i].item = newItem;
                 if (leftover == 0) { return; }
@@ -49,17 +43,17 @@ public class Inventory : MonoBehaviour
 
         if (leftover != 0) 
         {
-            Debug.Log("failed to add items");
+            Debug.Log($"failed to add items --- {leftover}");
         }
     }
 
     private void Awake()
     {
-        items = new AmountItemPair[defaultSize];
+        //Debug.Log(float.PositiveInfinity - 1);
     }
 
     private void OnValidate()
     {
-        
+
     }
 }

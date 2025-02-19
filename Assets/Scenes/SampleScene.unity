@@ -415,6 +415,7 @@ GameObject:
   - component: {fileID: 1175080792}
   - component: {fileID: 1175080791}
   - component: {fileID: 1175080793}
+  - component: {fileID: 1175080794}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -436,8 +437,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHP: {fileID: 0}
   playerMaxHP: {fileID: 0}
-  inventory: {fileID: 0}
-  items: []
+  playerInventory: {fileID: 0}
+  inventoryManager: {fileID: 0}
 --- !u!4 &1175080792
 Transform:
   m_ObjectHideFlags: 0
@@ -465,10 +466,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b99247dab170740bdad90436ac43cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultSize: 10
   items:
-  - amount: 3
+  - count: 3
     item: {fileID: 11400000, guid: 45795ed19d4261640a3cd01d5f69ee17, type: 2}
+  - count: 2
+    item: {fileID: 11400000, guid: 195c6ce33fe4be647a34666e17857330, type: 2}
+  - count: 2
+    item: {fileID: 11400000, guid: 4a3bfd867afbfb5499b4bd2be3002148, type: 2}
+  - count: 0
+    item: {fileID: 0}
+  - count: 0
+    item: {fileID: 0}
+  - count: 0
+    item: {fileID: 0}
+  - count: 0
+    item: {fileID: 0}
+  - count: 0
+    item: {fileID: 0}
+  - count: 0
+    item: {fileID: 0}
+  - count: 0
+    item: {fileID: 0}
+--- !u!114 &1175080794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175080790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 443efc802b7901c48abca24362a80faa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 11400000, guid: 195c6ce33fe4be647a34666e17857330, type: 2}
+  - {fileID: 11400000, guid: 797748e33603dd04b8e058a348b7d85e, type: 2}
+  - {fileID: 11400000, guid: 45795ed19d4261640a3cd01d5f69ee17, type: 2}
+  - {fileID: 11400000, guid: 4a3bfd867afbfb5499b4bd2be3002148, type: 2}
 --- !u!1 &1555382778
 GameObject:
   m_ObjectHideFlags: 0

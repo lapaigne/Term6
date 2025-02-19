@@ -4,18 +4,17 @@ public class GameManager : MonoBehaviour
 {
     public IntVariable playerHP;
     public IntVariable playerMaxHP;
-    public Inventory inventory;
-    [SerializeField]
-    public ItemData[] items;
+    public Inventory playerInventory;
+    public InventoryManager inventoryManager;
+    //public ItemData[] items;
 
     private void Awake()
     {
-        inventory = GetComponent<Inventory>();
+        playerInventory = GetComponent<Inventory>();
+        inventoryManager = GetComponent<InventoryManager>();
     }
     private void Start()
     {
-        // passes basic tests
-
-        inventory.AddItems(items[0], 9);
+        inventoryManager.AddItems(playerInventory, "apple", 3);
     }
 }

@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         
         if (hitInfo)
         {
-            Debug.DrawLine(characterController.transform.position, mouseWorldPosition, Color.yellow, 10f);
+            Debug.DrawLine(characterController.transform.position, mouseWorldPosition, Color.yellow, playerData.interactionDistance);
             if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactable))
             {
                 interactable.Interact(gameObject);
