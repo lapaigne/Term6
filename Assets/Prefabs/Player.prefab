@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2657599022361013463}
   - component: {fileID: 6055537835824030546}
-  - component: {fileID: 6157472438476199074}
   - component: {fileID: 4110777151333432906}
   - component: {fileID: 6402481503614395516}
   - component: {fileID: 3312270747459342440}
+  - component: {fileID: 6041866826782619035}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -88,7 +88,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!143 &6157472438476199074
+--- !u!114 &4110777151333432906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4211907606579809765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a19b0a6af70ba0479494b612707e41f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCamera: {fileID: 0}
+  cameraLerpFactor: 0
+--- !u!114 &6402481503614395516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4211907606579809765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1238763caba65b4479152b2db5f991ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 6fe72a0e59c27834b8bd4e2ce40fb969, type: 2}
+  damage:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  interactionDistance:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  speed:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 0}
+--- !u!114 &3312270747459342440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4211907606579809765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dafe8e7b90e5a6498d4eea83daba803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Interactable
+  seekerTag: 
+--- !u!143 &6041866826782619035
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,65 +163,10 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 0
+  m_Height: 1
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4110777151333432906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4211907606579809765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a19b0a6af70ba0479494b612707e41f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InteractionDistance:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: b455129f38de336409b0bdbbfe665c60, type: 2}
-  CurrentCamera: {fileID: 0}
---- !u!114 &6402481503614395516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4211907606579809765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1238763caba65b4479152b2db5f991ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 11400000, guid: 6fe72a0e59c27834b8bd4e2ce40fb969, type: 2}
-  Damage:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 0}
---- !u!114 &3312270747459342440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4211907606579809765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dafe8e7b90e5a6498d4eea83daba803, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InteractionDistance:
-    UseConstant: 0
-    ConstantValue: 2
-    Variable: {fileID: 11400000, guid: b455129f38de336409b0bdbbfe665c60, type: 2}
-  TargetTag: 
-  SeekerTag: 

@@ -27,7 +27,8 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         inputActions.Enable();
-        inputActions.Player.Interact.started += OnInteract;  
+        inputActions.Player.Interact.started += OnInteract;
+        inputActions.Player.Shoot.started += OnShoot;
         inputActions.Player.Move.performed += OnMove;
         inputActions.Player.Move.canceled += OnMove;
     }
@@ -36,12 +37,25 @@ public class PlayerController : MonoBehaviour
     {
         inputActions.Player.Move.performed -= OnMove;
         inputActions.Player.Move.canceled -= OnMove;
+        inputActions.Player.Shoot.canceled -= OnShoot;
         inputActions.Player.Interact.canceled -= OnInteract;
         inputActions.Disable();
     }
 
+    private void OnShoot(InputAction.CallbackContext ctx)
+    {
+        // Manual navigation rocket
+        Transform child = transform.Find("Hand");
+        if (child != null)
+        {
+            child.transform.SetParent(null);
+            child.transform.rotation = Quaternion.identity;
+            child.GetComponent<HandController>().Launch(mouseWorldPosition - (Vector2)child.transform.position);
+        }
+    }
+
     private void OnInteract(InputAction.CallbackContext ctx)
-    { 
+    {
         // can use this for shooting instead
         RaycastHit2D hitInfo = Physics2D.Raycast(
             characterController.transform.position, 
