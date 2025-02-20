@@ -3,32 +3,39 @@ public class HandController : MonoBehaviour
 {
     public FloatReference speed;
     public FloatReference lifeTime;
+    public Rigidbody rb;
 
-    private Vector2 destination;
+    private bool launched = false;
     private float distance;
-    private Vector2 currentDirection;
+    private Vector2 destination;
+    private Vector2 currentDirection = Vector2.zero;
+
     private float _timer;
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         _timer = -1;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision);
-        Explode();
+        if (launched)
+        {
+            Explode();
+        }
     }
 
     public void Launch(Vector2 initialDirection)
     {
+        launched = true;
         currentDirection = initialDirection.normalized;
         _timer = 0;
     }
 
     private void Update()
     {
-        Debug.Log(currentDirection);
         if (_timer < 0) { return; }
 
         if (_timer >= .3f)
@@ -42,7 +49,7 @@ public class HandController : MonoBehaviour
             currentDirection.Normalize();
         }
 
-        transform.Translate(currentDirection * Time.deltaTime * speed);
+        rb.velocity = currentDirection * speed;
 
         _timer += Time.deltaTime;
         if (_timer >= lifeTime) { Explode(); }
@@ -51,7 +58,6 @@ public class HandController : MonoBehaviour
     private void Explode()
     {
         Debug.Log("KABOOM!");
-        gameObject.SetActive(false);
         Destroy(gameObject);
     }
 }

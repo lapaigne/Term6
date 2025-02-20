@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e656bfe9b495484791da40804bde465, type: 3}
   m_Name: HandSpeed
   m_EditorClassIdentifier: 
-  Value: 1
+  Value: 10
