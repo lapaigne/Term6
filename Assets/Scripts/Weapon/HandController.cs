@@ -20,11 +20,14 @@ public class HandController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (launched) { Explode(); }
+        if (launched) {
+            Explode();
+        }
     }
 
     public void Launch(Vector2 initialDirection)
     {
+        rb.bodyType = RigidbodyType2D.Dynamic;
         launched = true;
         currentDirection = initialDirection.normalized;
         _timer = 0;
@@ -53,6 +56,7 @@ public class HandController : MonoBehaviour
 
     private void Explode()
     {
+        // TODO: damage all entities in radius
         Debug.Log("KABOOM!");
         Destroy(gameObject);
     }

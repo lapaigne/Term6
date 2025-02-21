@@ -328,6 +328,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 716618033}
     - target: {fileID: -2447800137188325073, guid: b84f82bf6fabe8d43bac4dd2e2237c59, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 8022803381611553641}
+    - target: {fileID: -2447800137188325073, guid: b84f82bf6fabe8d43bac4dd2e2237c59, type: 3}
       propertyPath: LookTarget.x
       value: 0
       objectReference: {fileID: 0}
@@ -754,7 +758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6402481503614395516, guid: 9da59def27112ff499bfd2332b9c89e6, type: 3}
       propertyPath: speed.ConstantValue
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6402481503614395516, guid: 9da59def27112ff499bfd2332b9c89e6, type: 3}
       propertyPath: damage.ConstantValue

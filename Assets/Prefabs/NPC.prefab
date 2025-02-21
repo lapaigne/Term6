@@ -116,7 +116,7 @@ MonoBehaviour:
   lookTarget: {x: 0, y: 0}
   moveTarget: {x: 0, y: 0}
   currentAction: 0
-  currentRelation: 0
+  currentRelation: -150
   target: {fileID: 0}
 --- !u!195 &-7170880881812914558
 NavMeshAgent:
