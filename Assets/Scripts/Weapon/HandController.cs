@@ -3,7 +3,7 @@ public class HandController : MonoBehaviour
 {
     public FloatReference speed;
     public FloatReference lifeTime;
-    public Rigidbody rb;
+    public Rigidbody2D rb;
 
     private bool launched = false;
     private float distance;
@@ -14,17 +14,13 @@ public class HandController : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         _timer = -1;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision);
-        if (launched)
-        {
-            Explode();
-        }
+        if (launched) { Explode(); }
     }
 
     public void Launch(Vector2 initialDirection)

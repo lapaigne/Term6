@@ -25,7 +25,7 @@ public partial class NPC : MonoBehaviour
     private NavMeshAgent _agent;
 
     // test only
-    public GameObject Player;
+    public Transform target;
 
     private void Awake()
     {
@@ -47,7 +47,7 @@ public partial class NPC : MonoBehaviour
 
     private NPCAction SetDestination()
     {
-        _agent.SetDestination(Player.transform.position);
+        _agent.SetDestination(target.position);
         return NPCAction.Attack;
     }
 

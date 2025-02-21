@@ -309,7 +309,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -7170880881812914558, guid: b84f82bf6fabe8d43bac4dd2e2237c59, type: 3}
       propertyPath: m_Height
-      value: 1
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7170880881812914558, guid: b84f82bf6fabe8d43bac4dd2e2237c59, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -7170880881812914558, guid: b84f82bf6fabe8d43bac4dd2e2237c59, type: 3}
       propertyPath: m_Enabled
@@ -317,7 +321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7170880881812914558, guid: b84f82bf6fabe8d43bac4dd2e2237c59, type: 3}
       propertyPath: m_BaseOffset
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: -2447800137188325073, guid: b84f82bf6fabe8d43bac4dd2e2237c59, type: 3}
       propertyPath: Player
@@ -367,13 +371,9 @@ PrefabInstance:
       propertyPath: _maxMoveSpeed.UseConstant
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2810364107542746967, guid: b84f82bf6fabe8d43bac4dd2e2237c59, type: 3}
-      propertyPath: m_Enabled
+    - target: {fileID: -441728101981847572, guid: b84f82bf6fabe8d43bac4dd2e2237c59, type: 3}
+      propertyPath: m_BodyType
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2810364107542746967, guid: b84f82bf6fabe8d43bac4dd2e2237c59, type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 5683027056844956473, guid: b84f82bf6fabe8d43bac4dd2e2237c59, type: 3}
       propertyPath: m_LocalPosition.x
@@ -419,7 +419,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -675,6 +676,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3565844096108514131, guid: 9da59def27112ff499bfd2332b9c89e6, type: 3}
+      propertyPath: m_Radius
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 2657599022361013463, guid: 9da59def27112ff499bfd2332b9c89e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -727,14 +732,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6041866826782619035, guid: 9da59def27112ff499bfd2332b9c89e6, type: 3}
-      propertyPath: m_Height
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6041866826782619035, guid: 9da59def27112ff499bfd2332b9c89e6, type: 3}
-      propertyPath: m_Radius
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 6055537835824030546, guid: 9da59def27112ff499bfd2332b9c89e6, type: 3}
       propertyPath: m_Size.x
       value: 0.64
@@ -767,7 +764,12 @@ PrefabInstance:
       propertyPath: interactionDistance.Variable
       value: 
       objectReference: {fileID: 11400000, guid: b455129f38de336409b0bdbbfe665c60, type: 2}
+    - target: {fileID: 8348842541558314139, guid: 9da59def27112ff499bfd2332b9c89e6, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
+    - {fileID: 0}
     - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -828,13 +830,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hand
       objectReference: {fileID: 0}
+    - target: {fileID: 3755873439387498770, guid: 6920e00e2789cc3499104d68187b540c, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4905460514668270809, guid: 6920e00e2789cc3499104d68187b540c, type: 3}
       propertyPath: lifeTime.ConstantValue
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7004561811817805801, guid: 6920e00e2789cc3499104d68187b540c, type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

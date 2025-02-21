@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private PlayerInput inputActions;
-    private CharacterController characterController;
+    private Rigidbody2D rb;
     private PlayerData playerData;
     private Vector2 rawInput;
 
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         playerData = GetComponent<PlayerData>();
-        characterController = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody2D>();
         inputActions = new PlayerInput();
         currentCamera = Camera.main;
     }
@@ -58,14 +58,14 @@ public class PlayerController : MonoBehaviour
     {
         // can use this for shooting instead
         RaycastHit2D hitInfo = Physics2D.Raycast(
-            characterController.transform.position, 
+            rb.transform.position, 
             mouseDirection, 
             playerData.interactionDistance
             );
         
         if (hitInfo)
         {
-            Debug.DrawLine(characterController.transform.position, mouseWorldPosition, Color.yellow, playerData.interactionDistance);
+            Debug.DrawLine(rb.transform.position, mouseWorldPosition, Color.yellow, playerData.interactionDistance);
             if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactable))
             {
                 interactable.Interact(gameObject);
@@ -78,15 +78,15 @@ public class PlayerController : MonoBehaviour
         rawInput = ctx.ReadValue<Vector2>();
     }
 
+    private void FixedUpdate()
+    {
+        rb.velocity = rawInput.normalized * playerData.speed;
+    }
+
     private void Update()
     {
-        Vector2 movement = rawInput;
-        movement.Normalize();
-        movement *= playerData.speed * Time.deltaTime;
-        characterController.Move(movement);
-
         mouseWorldPosition = currentCamera.ScreenToWorldPoint(Input.mousePosition);
-        mouseDirection = mouseWorldPosition - (Vector2)characterController.transform.position;
+        mouseDirection = mouseWorldPosition - (Vector2)rb.transform.position;
 
         if (mouseDirection.magnitude > 0.1f)
         {
